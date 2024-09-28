@@ -1,3 +1,4 @@
+from PyQt6.QtRemoteObjects.QRemoteObjectReplica import node
 from yaml import nodes
 
 
@@ -24,6 +25,7 @@ class LinkedList:
     """
 
     def __init__(self):
+        # Inline member var as sorts
         self.head = None
 
     def __repr__(self):
@@ -67,6 +69,50 @@ class LinkedList:
             else:
                 current = current.next_node
         return None
+
+    def insert(self, data, index):
+        # In case there is nothing in our linked list, this will add a Node to fill.
+        if index == 0:
+            self.add(data)
+
+        # This will traverse the list and add a node.
+        if index > 0:
+            new = Node(data)
+
+            # reassigning these values to keep track.
+            position = index
+            current = self.head
+
+            while position > 1:
+                current = node.next_node
+                position -= 1
+
+            # Before the new Node is 'prev' and after is 'next'
+            prev_node = current
+            next_node = current.next_node
+
+            # Now need to insert the new Node between prev and next []->[x]->[] arrows represent the connecting
+            # insertion points we're referencing below.
+            prev_node.next_node = new
+            new.next_node = next_node
+
+    def remove(self, key):
+        """Removes node containing data that matches the key."""
+        current = self.head
+        previous = None
+        found = False
+        while current and not found:
+            if current.data == key and current is not self.head:
+                found = True
+                self.head = current.next_node
+            elif current.data == key:
+                found = True
+                previous.next_node = current.next_node
+            else:
+                previous = current
+                current = current.next_node
+
+        return current
 
     def size(self):
         current = self.head
