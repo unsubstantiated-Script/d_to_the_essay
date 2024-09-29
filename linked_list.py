@@ -1,7 +1,3 @@
-from PyQt6.QtRemoteObjects.QRemoteObjectReplica import node
-from yaml import nodes
-
-
 class Node:
     """
     An object to represent a linked list.
