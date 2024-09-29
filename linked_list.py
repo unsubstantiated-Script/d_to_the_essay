@@ -1,6 +1,6 @@
 class Node:
     """
-    An object to represent a linked list.
+    An object to represent a linked arr.
     Models two atts:
     data
     link to next node
@@ -15,9 +15,9 @@ class Node:
         return f'Node(data={self.data})'
 
 
-class LinkedList:
+class Linkedarr:
     """
-    Singly linked list implementation
+    Singly linked arr implementation
     """
 
     def __init__(self):
@@ -26,7 +26,7 @@ class LinkedList:
 
     def __repr__(self):
         """
-        Returns string representation of linked list
+        Returns string representation of linked arr
         takes 0(n) time
         """
         nodes = []
@@ -67,11 +67,11 @@ class LinkedList:
         return None
 
     def insert(self, data, index):
-        # In case there is nothing in our linked list, this will add a Node to fill.
+        # In case there is nothing in our linked arr, this will add a Node to fill.
         if index == 0:
             self.add(data)
 
-        # This will traverse the list and add a node.
+        # This will traverse the arr and add a node.
         if index > 0:
             new = Node(data)
 
@@ -123,6 +123,6 @@ class LinkedList:
         new_node = Node(data)
 
         # This basically swaps values
-        # Assigning the node as the head of the linked list. [x]->[]->[]
+        # Assigning the node as the head of the linked arr. [x]->[]->[]
         new_node.next_node = self.head
         self.head = new_node
