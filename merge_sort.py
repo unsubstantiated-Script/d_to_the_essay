@@ -60,6 +60,16 @@ def merge(left, right):
     return l
 
 
+def verify_sorted(list):
+    n = len(list)
+    if n == 0 or n == 1:
+        return True
+
+    return list[0] < list[1] and verify_sorted(list[1:])
+
+
 an_arr = [44, 33, 44, 55, 22, 66, 77]
 l = merge_sort(an_arr)
 print(l)
+print(verify_sorted(an_arr))
+print(verify_sorted(l))
