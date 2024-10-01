@@ -15,7 +15,7 @@ class Node:
         return f'Node(data={self.data})'
 
 
-class Linkedarr:
+class LinkedArr:
     """
     Singly linked arr implementation
     """
@@ -46,6 +46,21 @@ class Linkedarr:
 
     def is_empty(self):
         return self.head is None
+
+    def node_at_index(self, index):
+        if index == 0:
+            return self.head
+        else:
+            current = self.head
+            position = 0
+
+            while position < index:
+                # Reassigning current and incrementing to loop over
+                current = current.next_node
+                position += 1
+
+            return current
+
 
     def search(self, key):
 
