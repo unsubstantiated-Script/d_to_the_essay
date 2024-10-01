@@ -7,6 +7,9 @@ def merge_sort(arr):
     Divide: find the midpoint of the arr and divide it into two subarrs
     Conquer: find the midpoint of the arr and divide it into two subarrs
     Combine: Merge the two subarrs
+
+    k exists here because of the Python slice operation on an arr.
+    Takes 0(n log n) time
     """
     if len(arr) <= 1:
         return arr
@@ -25,17 +28,24 @@ def split(arr):
     """
     Divide the unsorted arr at midpoint into subarrs
     Returns two sub-arrs - left and right
+
+    Takes overall 0(log n) time
     """
 
     mid = len(arr) // 2
+
+    # These slice actions are expensive.
     left = arr[:mid]
     right = arr[mid:]
+
+
     return left, right
 
 
 def merge(left, right):
     """
     Merges two arrs, sorting them in the process.
+    Runs in overall 0(n) time
     """
     l = []
     i = 0  # for left
@@ -60,15 +70,19 @@ def merge(left, right):
     return l
 
 
-def verify_sorted(list):
-    n = len(list)
+def verify_sorted(arr):
+    n = len(arr)
+
     if n == 0 or n == 1:
         return True
 
-    return list[0] < list[1] and verify_sorted(list[1:])
+    if arr[0] == arr[1]:
+        return True
+
+    return arr[0] < arr[1] and verify_sorted(arr[1:])
 
 
-an_arr = [44, 33, 44, 55, 22, 66, 77]
+an_arr = [44, 33, 77, 44, 55, 22, 66, 77]
 l = merge_sort(an_arr)
 print(l)
 print(verify_sorted(an_arr))
