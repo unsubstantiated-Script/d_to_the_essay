@@ -61,7 +61,6 @@ class LinkedArr:
 
             return current
 
-
     def search(self, key):
 
         """
@@ -95,7 +94,7 @@ class LinkedArr:
             current = self.head
 
             while position > 1:
-                current = node.next_node
+                current = current.next_node
                 position -= 1
 
             # Before the new Node is 'prev' and after is 'next'

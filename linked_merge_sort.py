@@ -8,6 +8,7 @@ def merge_sort(linked_list):
     - Repeatedly merge the sublists to produce sorted sublists until one remains
     :param linked_list:
     :return: sorted linked list
+    Runs in O(kn log n) time complexity.
     """
     # Stopping Condition
     if linked_list.size() == 1:
@@ -25,11 +26,12 @@ def merge_sort(linked_list):
 def split(linked_list):
     """
     Divide the unsorted list at midpoint into sublists.
+    Takes O(k log n) time complexity.
     :param linked_list:
     :return:
     """
 
-    if linked_list.size == None or linked_list.head is None:
+    if linked_list.size is None or linked_list.head is None:
         left_half = linked_list
         right_half = None
         return left_half, right_half
@@ -38,10 +40,12 @@ def split(linked_list):
         mid = size // 2
 
         mid_node = linked_list.node_at_index(mid - 1)
+
         left_half = linked_list
         right_half = LinkedArr()
-        right_half.head = mid_node.next_node()
+        right_half.head = mid_node.next_node
         mid_node.next_node = None
+
         # This is what's happened ->    [1]->[2]  [3]->[4]
         return left_half, right_half
 
@@ -49,6 +53,7 @@ def split(linked_list):
 def merge(left, right):
     """ Merges two linekd lists, sorting byh data in nodes
     Returns a new, merged list
+    Runs in O(n) time complexity.
     """
 
     # Create a new linked list that contains nodes from merging left and right
@@ -99,3 +104,15 @@ def merge(left, right):
     merged.head = head
 
     return merged
+
+
+l = LinkedArr()
+l.add(33)
+l.add(22)
+l.add(99)
+l.add(99)
+l.add(58)
+
+print(l)
+sorted_linked_list = merge_sort(l)
+print(sorted_linked_list)
